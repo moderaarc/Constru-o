@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HTML mais profissional — Exemplo com colunas coloridas</title>
+  <style>
+    :root{
+      --accent:#6fa8dc;
+      --muted:#f3f7fb;
+      --border:#9aa6b2;
+      --card-bg:#fff;
+      --font-sans: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --col-gastos:#e0f7fa;
+      --col-lucros:#fce4ec;
+      --col-estado:#fff9c4;
+    }
+    body{
+      margin:0;
+      font-family:var(--font-sans);
+      background: linear-gradient(180deg,#f7fafc,#eef6fb);
+      color:#213243;
+      padding:24px;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      background:var(--muted);
+      padding:20px;
+      border-radius:10px;
+      box-shadow:0 6px 22px rgba(15,30,40,0.08);
+      border:1px solid rgba(0,0,0,0.04);
+    }
+
+    header.topbar{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:18px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:34px;height:34px;
+      background:linear-gradient(180deg,#3b82c4,#6fa8dc);
+      color:white;
+      border-radius:50%;
+      font-weight:700;
+    }
+    h1{
+      margin:0;
+      font-size:20px;
+      padding:6px 12px;
+      background:linear-gradient(90deg,var(--accent),#8cc0e8);
+      color:white;
+      border-radius:8px;
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns: 1fr 520px;
+      gap:18px;
+      align-items:start;
+    }
+
+    .left, .right{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .image-card{
+      background:var(--card-bg);
+      padding:10px;
+      border-radius:8px;
+      border:1px solid var(--border);
+      display:flex;
+      justify-content:center;
+    }
+    .image-card img{
+      max-width:100%;
+      height:auto;
+      display:block;
+      border-radius:6px;
+    }
+
+    .small-table{
+      width:260px;
+      background:var(--card-bg);
+      border-radius:6px;
+      padding:8px;
+      border:1px solid var(--border);
+    }
+
+    table{
+      border-collapse:collapse;
+      width:100%;
+      font-size:14px;
+    }
+    th, td{
+      border:1px solid var(--border);
+      padding:8px;
+      text-align:center;
+    }
+    th{
+      font-weight:700;
+      background:#f0f6fb;
+    }
+
+    /* Pintura das colunas */
+    .estado-col{
+      background:var(--col-estado);
+    }
+    .col-gastos{
+      background:var(--col-gastos);
+    }
+    .col-lucros{
+      background:var(--col-lucros);
+    }
+
+    .caption{
+      font-weight:700;
+      margin-bottom:6px;
+      color:#4b6b80;
+    }
+
+    @media(max-width:980px){
+      .layout{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <div class="badge">3</div>
+      <h1>HTML mais profissional</h1>
+    </header>
+
+    <div class="layout">
+      <!-- esquerda -->
+      <div class="left">
+        <div class="image-card">
+          <img src="slide.jpg" alt="Imagem ilustrativa" />
+        </div>
+
+        <div class="small-table">
+          <div class="caption">Brasil</div>
+          <table>
+            <thead>
+              <tr>
+                <th class="estado-col">Estado</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td rowspan="4" class="estado-col">São Paulo</td><td>Corinthians</td></tr>
+              <tr><td>Palmeiras</td></tr>
+              <tr><td>São Paulo</td></tr>
+              <tr><td>Santos</td></tr>
+              <tr><td rowspan="4" class="estado-col">Rio de Janeiro</td><td>Botafogo</td></tr>
+              <tr><td>Flamengo</td></tr>
+              <tr><td>Fluminense</td></tr>
+              <tr><td>Vasco</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- direita -->
+      <div class="right">
+        <div class="caption">Funcionário — Gastos e Lucros</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Funcionário</th>
+              <th>Semestre</th>
+              <th colspan="2" class="col-gastos">Gastos</th>
+              <th colspan="2" class="col-lucros">Lucros</th>
+            </tr>
+            <tr>
+              <th></th><th></th>
+              <th class="col-gastos">Líquido</th><th class="col-gastos">Bruto</th>
+              <th class="col-lucros">Líquido</th><th class="col-lucros">Bruto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>João</td><td>1º</td>
+              <td class="col-gastos">1000</td><td class="col-gastos">1200</td>
+              <td class="col-lucros">200</td><td class="col-lucros">300</td>
+            </tr>
+            <tr>
+              <td>João</td><td>2º</td>
+              <td class="col-gastos">1000</td><td class="col-gastos">1200</td>
+              <td class="col-lucros">200</td><td class="col-lucros">300</td>
+            </tr>
+            <tr>
+              <td>Maria</td><td>1º</td>
+              <td class="col-gastos">1000</td><td class="col-gastos">1200</td>
+              <td class="col-lucros">200</td><td class="col-lucros">300</td>
+            </tr>
+            <tr>
+              <td>Maria</td><td>2º</td>
+              <td class="col-gastos">1000</td><td class="col-gastos">1200</td>
+              <td class="col-lucros">200</td><td class="col-lucros">300</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="caption">Produto — Análise de Preço</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Vendedor</th>
+              <th>Forma</th>
+              <th>Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="4">Caixa JBL Bump!</td>
+              <td>Submarino</td><td>Boleto</td><td>R$ 300,00</td>
+            </tr>
+            <tr><td>Submarino</td><td>Cartão</td><td>R$ 350,00</td></tr>
+            <tr><td>Amazon</td><td>Boleto</td><td>R$ 310,00</td></tr>
+            <tr><td>Amazon</td><td>Cartão</td><td>R$ 340,00</td></tr>
+
+            <tr>
+              <td rowspan="4">Apple Watch SE</td>
+              <td>Submarino</td><td>Boleto</td><td>R$ 2.300,00</td>
+            </tr>
+            <tr><td>Submarino</td><td>Cartão</td><td>R$ 2.500,00</td></tr>
+            <tr><td>Amazon</td><td>Boleto</td><td>R$ 2.350,00</td></tr>
+            <tr><td>Amazon</td><td>Cartão</td><td>R$ 2.350,00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <!DOCTYPE html>
+  <html lang="pt-br">
+  <head>
+      <meta charset="UTF-8">
+      <title>Meus Jogos Favoritos</title>
+      <style>
+          table {
+              width: 100%;
+              border-collapse: collapse;
+              text-align: left;
+          }
+          th, td {
+              border: 1px solid black;
+              padding: 8px;
+              vertical-align: top;
+          }
+          th {
+              text-align: center;
+          }
+          ul, ol {
+              margin: 0;
+              padding-left: 20px;
+          }
+      </style>
+  </head>
+  <body>
+      <h3>Desafio</h3>
+      <table>
+          <tr>
+              <th>NES</th>
+              <th>sNES</th>
+              <th colspan="5">Meus Jogos Favoritos<br>PlayStation</th>
+              <th>Xbox</th>
+          </tr>
+          <tr>
+              <td>
+                  <ul>
+                      <li>Mario Kart 8 Deluxe (Nintendo Switch)
+                          <ul>
+                              <li>Mario Bros 3</li>
+                              <li>Marios Lost Levels</li>
+                          </ul>
+                      </li>
+                      <li>Pokémon Emerald (Game Boy Advance)</li>
+                      <li>Fire Emblem: Awakening (Nintendo DS)</li>
+                      <li>Super Mario 64 (Nintendo 64)</li>
+                      <li>Super Smash Bros. Ultimate (Nintendo Switch)</li>
+                      <li>Metroid Prime (GameCube)</li>
+                  </ul>
+              </td>
+              <td>
+                  <ul>
+                      <li>Super Mario RPG: Legend of the Seven Stars</li>
+                      <li>The Legend of Zelda: A Link to the Past</li>
+                      <li>Super Metroid</li>
+                      <li>Mega Man X</li>
+                      <li>Kirby Super Star</li>
+                      <li>Star Fox</li>
+                  </ul>
+              </td>
+              <td>
+                  <strong>PlayStation (PSOne)</strong>
+                  <ul>
+                      <li>Ridge</li>
+                      <li>Tomb Raider</li>
+                      <li>Meal Gear Solid</li>
+                  </ul>
+              </td>
+              <td>
+                  <strong>PlayStation 2 (PS2)</strong>
+                  <ul>
+                      <li>Grand Theft Auto III</li>
+                      <li>GTA 3</li>
+                      <li>God of War</li>
+                  </ul>
+              </td>
+              <td>
+                  <strong>PlayStation 3 (PS3)</strong>
+                  <ul>
+                      <li>LittleBigPlanet</li>
+                      <li>Grand Theft Auto V</li>
+                      <li>The Last of Us</li>
+                  </ul>
+              </td>
+              <td>
+                  <strong>PlayStation 4 (PS4)</strong>
+                  <ul>
+                      <li>Uncharted 4: A Thief's End</li>
+                      <li>Bloodborne</li>
+                      <li>God of War</li>
+                  </ul>
+              </td>
+              <td>
+                  <strong>PlayStation 5 (PS5)</strong>
+                  <ul>
+                      <li>Marvel's Spider-Man</li>
+                      <li>Demon's Souls</li>
+                      <li>God of War</li>
+                  </ul>
+              </td>
+              <td>
+                  <ol>
+                      <li>007.</li>
+                      <li>007: Quantum of Solace</li>
+                      <li>2006 FIFA World Cup</li>
+                      <li>A Kingdom for Keflings</li>
+                  </ol>
+              </td>
+          </tr>
+      </table>
+  </body>
+  </html>
+  
+
+</body>
+</html>
+
