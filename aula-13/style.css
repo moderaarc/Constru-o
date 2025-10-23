@@ -1,0 +1,8 @@
+.container {
+    font-display: flex;
+    align-items: center;
+    height: 300px;
+}
+div {
+    border-radius: 20px;
+}
