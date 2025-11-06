@@ -14,4 +14,38 @@
         <li>Macarrão</li>
     </ul></h3>
 </body>
+
 </html>
+<script>
+  function calcula_idade() {
+    const hoje = new Date();
+
+    const result = document.getElementById("resultado");
+
+    const dia = parseInt(document.getElementById("dia").value, 10);
+    const mes = parseInt(document.getElementById("mes").value, 10) - 1; // Date usa 0–11
+    const ano = parseInt(document.getElementById("ano").value, 10);
+
+    // validação básica
+    if (!dia || !mes && mes !== 0 || !ano || dia <= 0 || dia > 31 || ano <= 0) {
+      alert("Digite uma data de nascimento válida");
+      return;
+    }
+
+    const nascimento = new Date(ano, mes, dia);
+
+    let idade = hoje.getFullYear() - nascimento.getFullYear();
+
+    const aniversarioEsteAno = new Date(
+      hoje.getFullYear(),
+      nascimento.getMonth(),
+      nascimento.getDate()
+    );
+
+    if (hoje < aniversarioEsteAno) {
+      idade--;
+    }
+
+    result.textContent = `Idade: ${idade} anos`;
+  }
+</script>
