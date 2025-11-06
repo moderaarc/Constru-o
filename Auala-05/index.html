@@ -15,3 +15,70 @@
     </ul></h3>
 </body>
 
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Idade</title>
+</head>
+<body>
+  <div>
+    <span>Data de Nascimento</span><br>
+
+    <input id="dia" type="number" max="31" placeholder="Dia de nascimento">
+    
+    <select name="mes" id="mes">
+      <option value="01">Janeiro</option>
+      <option value="02">Fevereiro</option>
+      <option value="03">Março</option>
+      <option value="04">Abril</option>
+      <option value="05">Maio</option>
+      <option value="06">Junho</option>
+      <option value="07">Julho</option>
+      <option value="08">Agosto</option>
+      <option value="09">Setembro</option>
+      <option value="10">Outubro</option>
+      <option value="11">Novembro</option>
+      <option value="12">Dezembro</option>
+    </select>
+
+    <input id="ano" type="number" placeholder="Ano de nascimento">
+    <br><br>
+
+    <button onclick="calcula_idade()">Calcular idade</button>
+    <p id="resultado"></p>
+  </div>
+
+  <script>
+    function calcula_idade() {
+      const hoje = new Date();
+      const result = document.getElementById("resultado");
+
+      const dia = parseInt(document.getElementById("dia").value, 10);
+      const mes = parseInt(document.getElementById("mes").value, 10) - 1; // 0 = Janeiro
+      const ano = parseInt(document.getElementById("ano").value, 10);
+
+      if (isNaN(dia) || isNaN(mes) || isNaN(ano) || dia <= 0 || dia > 31 || ano <= 0) {
+        alert("Digite uma data de nascimento válida");
+        return;
+      }
+
+      const nascimento = new Date(ano, mes, dia);
+      let idade = hoje.getFullYear() - nascimento.getFullYear();
+
+      const aniversarioEsteAno = new Date(
+        hoje.getFullYear(),
+        nascimento.getMonth(),
+        nascimento.getDate()
+      );
+
+      if (hoje < aniversarioEsteAno) {
+        idade--;
+      }
+
+      result.textContent = `Idade: ${idade} anos`;
+    }
+  </script>
+</body>
+</html>
